@@ -8,16 +8,17 @@
 LV_IMG_DECLARE(layer);
 
 void draw_layer_status(lv_obj_t *canvas, const struct status_state *state) {
-    if (state->layer_label == NULL || state->layer_label[0] == '\0') {
-        return;
-    }
-
     lv_draw_img_dsc_t img_dsc;
     lv_draw_img_dsc_init(&img_dsc);
     lv_draw_label_dsc_t label_dsc;
     init_label_dsc(&label_dsc, LVGL_BACKGROUND, &font, LV_TEXT_ALIGN_CENTER);
 
     char text[10] = {};
+    if (state->layer_label == NULL || state->layer_label[0] == '\0') {
+        sprintf(text, "LAYER %i", "1");
+    }
+
+
     strcpy(text, state->layer_label);
     to_uppercase(text);
 
