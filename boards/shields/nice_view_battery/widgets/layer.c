@@ -14,13 +14,13 @@ void draw_layer_status(lv_obj_t *canvas, const struct status_state *state) {
     init_label_dsc(&label_dsc, LVGL_BACKGROUND, &font, LV_TEXT_ALIGN_CENTER);
 
     char text[10] = {};
-    if (state->layer_label == NULL || state->layer_label[0] == '\0') {
+    if (state->layer_label == NULL || strlen(state->layer_label) == 0) {
         sprintf(text, "LAYER %i", "1");
     }
-
-
-    strcpy(text, state->layer_label);
-    to_uppercase(text);
+    else{
+        strcpy(text, state->layer_label);
+        to_uppercase(text);
+    }
 
     lv_canvas_draw_img(canvas, OFFSET_X, OFFSET_Y, &layer, &img_dsc);
     lv_canvas_draw_text(canvas, OFFSET_X + 2, OFFSET_Y, 64, &label_dsc, text);
