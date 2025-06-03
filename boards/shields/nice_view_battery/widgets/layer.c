@@ -15,7 +15,7 @@ void draw_layer_status(lv_obj_t *canvas, const struct status_state *state) {
 
     char text[10] = {};
     if (state->layer_label == NULL || strlen(state->layer_label) == 0) {
-        sprintf(text, "LAYER %i", "1");
+        sprintf(text, "LAYER %d", "1");
     }
     else{
         strcpy(text, state->layer_label);
